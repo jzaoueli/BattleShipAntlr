@@ -1,5 +1,5 @@
-// Generated from C:/Users/Jihed/IdeaProjects/firstAntlr/src/auf2\fieldgram.g4 by ANTLR 4.5.1
-package auf2.genrated;
+// Generated from C:/Users/Jihed/IdeaProjects/firstAntlr/src/auf2\FieldGram.g4 by ANTLR 4.5.1
+package auf2.generated.auf2;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class fieldgramParser extends Parser {
+public class FieldGramParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -64,7 +64,7 @@ public class fieldgramParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "fieldgram.g4"; }
+	public String getGrammarFileName() { return "FieldGram.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -75,32 +75,32 @@ public class fieldgramParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public fieldgramParser(TokenStream input) {
+	public FieldGramParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class FileContext extends ParserRuleContext {
-		public List<TerminalNode> Row() { return getTokens(fieldgramParser.Row); }
+		public List<TerminalNode> Row() { return getTokens(FieldGramParser.Row); }
 		public TerminalNode Row(int i) {
-			return getToken(fieldgramParser.Row, i);
+			return getToken(FieldGramParser.Row, i);
 		}
-		public TerminalNode Finalrow() { return getToken(fieldgramParser.Finalrow, 0); }
-		public TerminalNode EOF() { return getToken(fieldgramParser.EOF, 0); }
+		public TerminalNode Finalrow() { return getToken(FieldGramParser.Finalrow, 0); }
+		public TerminalNode EOF() { return getToken(FieldGramParser.EOF, 0); }
 		public FileContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_file; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof fieldgramListener ) ((fieldgramListener)listener).enterFile(this);
+			if ( listener instanceof FieldGramListener ) ((FieldGramListener)listener).enterFile(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof fieldgramListener ) ((fieldgramListener)listener).exitFile(this);
+			if ( listener instanceof FieldGramListener ) ((FieldGramListener)listener).exitFile(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof fieldgramVisitor ) return ((fieldgramVisitor<? extends T>)visitor).visitFile(this);
+			if ( visitor instanceof FieldGramVisitor ) return ((FieldGramVisitor<? extends T>)visitor).visitFile(this);
 			else return visitor.visitChildren(this);
 		}
 	}

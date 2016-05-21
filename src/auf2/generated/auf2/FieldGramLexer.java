@@ -1,5 +1,5 @@
-// Generated from C:/Users/Jihed/IdeaProjects/firstAntlr/src/auf2\fieldgram.g4 by ANTLR 4.5.1
-package auf2.genrated;
+// Generated from C:/Users/Jihed/IdeaProjects/firstAntlr/src/auf2\FieldGram.g4 by ANTLR 4.5.1
+package auf2.generated.auf2;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class fieldgramLexer extends Lexer {
+public class FieldGramLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -66,13 +66,13 @@ public class fieldgramLexer extends Lexer {
 	}
 
 
-	public fieldgramLexer(CharStream input) {
+	public FieldGramLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "fieldgram.g4"; }
+	public String getGrammarFileName() { return "FieldGram.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
