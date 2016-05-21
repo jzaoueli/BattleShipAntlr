@@ -1,5 +1,5 @@
 // Generated from C:/Users/Jihed/IdeaProjects/firstAntlr/src/auf2\FieldGram.g4 by ANTLR 4.5.1
-package auf2.generated.auf2;
+package auf2.antlergeneration;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
