@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * @param <T> The return type of the visit operation. Use {@link Void} for
  *            operations with no return type.
  */
-public interface CSVVisitor<T> extends ParseTreeVisitor<T> {
+interface CSVVisitor<T> extends ParseTreeVisitor<T> {
     /**
      * Visit a parse tree produced by {@link CSVParser#file}.
      *
