@@ -7,11 +7,11 @@ public class CodeGenerator {
 
         String generatedStr =
                 "package auf2.battleship.generated;\n\n" +
-                        "public class Field {\n\n" +
+                        "class Field {\n\n" +
                         "   private static String[][] field = new String[][]{\n";
 
 
-        try (BufferedReader br = new BufferedReader(new FileReader("files/auf2/model.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/auf2/battleship/generated/generatedModel.txt"))) {
             String line;
             String generatedLine;
             for (int i = 0; i < 7; i++) {
@@ -28,7 +28,7 @@ public class CodeGenerator {
             e.printStackTrace();
         }
         generatedStr = generatedStr.substring(0, generatedStr.length() - 2) + "\n   };\n\n"
-                + "   public static String[][] getField(){\n"
+                + "   static String[][] getField(){\n"
                 + "     return field;\n"
                 + "   }\n}";
 
