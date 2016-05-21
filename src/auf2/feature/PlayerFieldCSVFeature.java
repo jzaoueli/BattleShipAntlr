@@ -1,4 +1,4 @@
-package auf2.battleship.game;
+package auf2.feature;
 
 import auf2.generated.auf2.FieldGramBaseListener;
 import auf2.generated.auf2.FieldGramLexer;
