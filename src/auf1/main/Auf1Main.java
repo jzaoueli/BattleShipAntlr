@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Jihed on 19.05.2016.
  * this is the main class who run the verification of test file
  */
-public class Main extends CSVBaseListener {
+public class Auf1Main extends CSVBaseListener {
 
     public static void main(String[] args) throws IOException {
         FileReader fileReader = new FileReader("files/auf1/test.csv");
@@ -29,7 +29,7 @@ public class Main extends CSVBaseListener {
         CSVParser.FileContext fileContext = parser.file();
         // Walk it and attach our listener
         ParseTreeWalker walker = new ParseTreeWalker();
-        CSVBaseListener listener = new Main();
+        CSVBaseListener listener = new Auf1Main();
         walker.walk(listener, fileContext);
     }
 
