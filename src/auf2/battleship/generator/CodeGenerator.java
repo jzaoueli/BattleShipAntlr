@@ -12,7 +12,7 @@ public class CodeGenerator extends PlayerFieldCSVFeature {
         generatedStr += getTableValues();
         generatedStr = setFooter(generatedStr);
 
-        createAndWriteInFile("src/auf2/battleship/generated/GeneratedField.java", generatedStr);
+        createAndWriteInFile("src/auf2/battleship/game/Field.java", generatedStr);
 
     }
 
