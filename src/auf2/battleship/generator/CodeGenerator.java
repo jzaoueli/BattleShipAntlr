@@ -32,7 +32,7 @@ public class CodeGenerator extends FieldGramBaseListener {
 
     private static String getHeaderStrings() {
         return "package auf2.battleship.game;\n\n" +
-                "class GeneratedField {\n\n" +
+                "class Field {\n\n" +
                 "   private static String[][] field = new String[][]{\n";
     }
 
