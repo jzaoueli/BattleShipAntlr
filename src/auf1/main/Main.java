@@ -1,22 +1,26 @@
-import generated.CSVBaseListener;
-import generated.CSVLexer;
-import generated.CSVParser;
+package auf1.main;
+
+import auf1.generated.CSVBaseListener;
+import auf1.generated.CSVLexer;
+import auf1.generated.CSVParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 /**
  * Created by Jihed on 19.05.2016.
+ * this is the main class who run the verification of test file
  */
 public class Main extends CSVBaseListener {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws IOException {
+        FileReader fileReader = new FileReader("files/auf1/test.csv");
+        ANTLRInputStream antlrInputStream = new ANTLRInputStream(fileReader);
         // Get CSV lexer
-        CSVLexer lexer = new CSVLexer(new ANTLRInputStream(new FileReader("files/test.csv")));
+        CSVLexer lexer = new CSVLexer(antlrInputStream);
         // Get a list of matched tokens
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         // Pass the tokens to the parser
