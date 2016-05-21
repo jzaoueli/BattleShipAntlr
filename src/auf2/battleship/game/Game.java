@@ -24,17 +24,20 @@ class Game {
             }
             shoot++;
 
-            if (field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1].equals("0")) {
-                System.out.println("kein Treffer");
+            if (field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1].equals("w")) {
+                System.err.println("kein Treffer");
             } else {
-                System.out.println("Treffer");
-                field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1] = ("0");
+                System.err.println("Treffer");
+                field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1] = ("w");
+            }
+            if(shoot == 49){
+                break;
             }
         }
         if (testWinGame())
-            System.out.println("Du hast das Spiel nach Abgabe von " + shoot + " Schüssen gewonnen.");
+            System.err.println("Du hast das Spiel nach Abgabe von " + shoot + " Schüssen gewonnen.");
         else {
-            System.out.println("Du hast das Spiel nach Abgabe von 49 Schüssen verloren.");
+            System.err.println("Du hast das Spiel nach Abgabe von \'" + shoot +"\' Schüssen verloren.");
         }
     }
 
@@ -42,7 +45,7 @@ class Game {
     private boolean testWinGame() {
         for (int i = 0; i < 7; i++)
             for (int j = 0; j < 7; j++) {
-                if (field[i][j].equals("1")) {
+                if (field[i][j].equals("s")) {
                     return false;
                 }
             }
