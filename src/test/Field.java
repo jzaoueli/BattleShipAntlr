@@ -1,4 +1,4 @@
-package auf2.battleship.game;
+package test;
 
 class Field {
 
