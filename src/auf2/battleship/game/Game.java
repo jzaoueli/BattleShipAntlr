@@ -2,7 +2,7 @@ package auf2.battleship.game;
 
 import java.util.Scanner;
 
-class Game {
+public class Game {
 
     private String[][] field;
 
@@ -13,7 +13,7 @@ class Game {
     void play() {
 
         int shoot = 0;
-        while (!testWinGame()) {
+        while (!testWinGame(field)) {
 
             String coordination = readInputFromUser();
             boolean test = testCoordination(coordination);
@@ -24,25 +24,33 @@ class Game {
             }
             shoot++;
 
-            if (field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1].equals("w")) {
-                System.err.println("kein Treffer");
-            } else {
+            if(checkHits(coordination, field)){
                 System.err.println("Treffer");
-                field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1] = ("w");
+            }else {
+                System.err.println("kein Treffer");
             }
             if(shoot == 49){
                 break;
             }
         }
-        if (testWinGame())
+        if (testWinGame(field))
             System.err.println("Du hast das Spiel nach Abgabe von " + shoot + " Schüssen gewonnen.");
         else {
             System.err.println("Du hast das Spiel nach Abgabe von \'" + shoot +"\' Schüssen verloren.");
         }
     }
 
+    public static boolean checkHits(String coordination, String[][] field) {
+        if (field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1].equals("w")) {
+            return false;
+        } else {
+            field[coordination.charAt(0) - 97][Character.getNumericValue(coordination.charAt(1)) - 1] = ("w");
+            return true;
+        }
+    }
 
-    private boolean testWinGame() {
+
+    public static boolean testWinGame(String[][] field) {
         for (int i = 0; i < 7; i++)
             for (int j = 0; j < 7; j++) {
                 if (field[i][j].equals("s")) {
@@ -52,7 +60,7 @@ class Game {
         return true;
     }
 
-    private boolean testCoordination(String coordination) {
+    public static boolean testCoordination(String coordination) {
         boolean test = (coordination.length() == 2);
         test = test && (Character.isLetter(coordination.charAt(0))) && (coordination.charAt(0) >= 'a') && (coordination.charAt(0) <= 'g');
         test = test && (Character.isDigit(coordination.charAt(1))) && (coordination.charAt(1) >= '1') && (coordination.charAt(1) <= '7');
