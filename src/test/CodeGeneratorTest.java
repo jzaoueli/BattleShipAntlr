@@ -20,9 +20,9 @@ public class CodeGeneratorTest {
     private static String RESULT_STRING = "";
 
     @Test
-    public void main() throws Exception {
+    public void mainTest() throws Exception {
         String INPUT_STRING =
-                "w;w;w;s;s;s;s\n" +
+                        "w;w;w;s;s;s;s\n" +
                         "w;s;w;w;w;w;w\n" +
                         "w;s;w;w;w;w;w\n" +
                         "w;s;w;s;s;s;w\n" +
@@ -30,13 +30,13 @@ public class CodeGeneratorTest {
                         "w;s;w;w;w;w;w\n" +
                         "w;w;s;s;w;w;w<EOF>";
         whenGetTableValues(INPUT_STRING);
-        thenTableValueAdded();
+        thenTableValueAdded(RESULT_STRING);
     }
 
     @Test
     public void failureGenerateFile() {
         String INPUT_STRING =
-                "nullw;w;w;s;s;s;s\n" +
+                    "nullw;w;w;s;s;s;s\n" +
                         "w;s;w;w;w;w;w\n" +
                         "w;s;w;w;w;w;w\n" +
                         "w;s;w;s;s;s;w\n" +
@@ -57,7 +57,7 @@ public class CodeGeneratorTest {
     public void checkGeneratedFile() throws IOException {
         String text;
         String INPUT_STRING =
-                "w;w;w;s;s;s;s\n" +
+                        "w;w;w;s;s;s;s\n" +
                         "w;s;w;w;w;w;w\n" +
                         "w;s;w;w;w;w;w\n" +
                         "w;s;w;s;s;s;w\n" +
@@ -129,9 +129,9 @@ public class CodeGeneratorTest {
         return tempText;
     }
 
-    private void thenTableValueAdded() {
+    private void thenTableValueAdded(String result) {
         String EXPECTED_RESULT_STRING =
-                "\"w\",\"w\",\"w\",\"s\",\"s\",\"s\",\"s\"},\n" +
+                                "\"w\",\"w\",\"w\",\"s\",\"s\",\"s\",\"s\"},\n" +
                         "       {\"w\",\"s\",\"w\",\"w\",\"w\",\"w\",\"w\"},\n" +
                         "       {\"w\",\"s\",\"w\",\"w\",\"w\",\"w\",\"w\"},\n" +
                         "       {\"w\",\"s\",\"w\",\"s\",\"s\",\"s\",\"w\"},\n" +
@@ -139,7 +139,7 @@ public class CodeGeneratorTest {
                         "       {\"w\",\"s\",\"w\",\"w\",\"w\",\"w\",\"w\"},\n" +
                         "       {\"w\",\"w\",\"s\",\"s\",\"w\",\"w\",\"w\",";
 
-        assertTrue(EXPECTED_RESULT_STRING.equals(RESULT_STRING));
+        assertTrue(EXPECTED_RESULT_STRING.equals(result));
     }
 
     private void whenGetTableValues(String csvString) {
