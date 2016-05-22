@@ -1,6 +1,5 @@
 package test;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
@@ -8,15 +7,16 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.Arrays;
 
-import static auf2.battleship.generator.CodeGenerator.*;
-import static org.junit.Assert.assertTrue;
+import static auf2.battleship.generator.CodeGenerator.createAndWriteInFile;
+import static auf2.battleship.generator.CodeGenerator.setContent;
+import static auf2.battleship.generator.CodeGenerator.setFooter;
+import static org.junit.Assert.*;
 
 /**
- * Created by Jihed on 21.05.2016.
- * test Code Generator class
+ * Created by Jihed on 22.05.2016.
+ * test for CodeGenerator class
  */
 public class CodeGeneratorTest {
-
     private static String RESULT_STRING = "";
 
     @Test
@@ -57,13 +57,13 @@ public class CodeGeneratorTest {
     public void checkGeneratedFile() throws IOException {
         String text;
         String INPUT_STRING =
-                 "w;w;w;s;s;s;s\n" +
-                 "w;s;w;w;w;w;w\n" +
-                 "w;s;w;w;w;w;w\n" +
-                 "w;s;w;s;s;s;w\n" +
-                 "w;s;w;w;w;w;w\n" +
-                 "w;s;w;w;w;w;w\n" +
-                 "w;w;s;s;w;w;w<EOF>";
+                "w;w;w;s;s;s;s\n" +
+                        "w;s;w;w;w;w;w\n" +
+                        "w;s;w;w;w;w;w\n" +
+                        "w;s;w;s;s;s;w\n" +
+                        "w;s;w;w;w;w;w\n" +
+                        "w;s;w;w;w;w;w\n" +
+                        "w;w;s;s;w;w;w<EOF>";
         String[][] expectedText = new String[][]{
                 {"w","w","w","s","s","s","s"},
                 {"w","s","w","w","w","w","w"},
@@ -145,5 +145,4 @@ public class CodeGeneratorTest {
     private void whenGetTableValues(String csvString) {
         RESULT_STRING = setContent(csvString, RESULT_STRING);
     }
-
 }
