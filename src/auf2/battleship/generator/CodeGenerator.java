@@ -12,15 +12,18 @@ import java.io.*;
 public class CodeGenerator extends FieldGramBaseListener {
 
     private static String result;
+    private static final String FIELD_PATH = "src/auf2/battleship/game/Field.java";
 
     public static void main(String[] args) throws IOException {
 
+        //set the head of generated Field class
         String generatedStr = getHeaderStrings();
+        //set the Field into String[][] in Field class
         generatedStr += getTableValues();
+        //set the get method and foot of generated Field class
         generatedStr = setFooter(generatedStr);
-
-        createAndWriteInFile("src/auf2/battleship/game/Field.java", generatedStr);
-
+        //generate Filed.java from the generatedString
+        createAndWriteInFile(FIELD_PATH, generatedStr);
     }
 
     public static String setFooter(String generatedStr) {
@@ -48,7 +51,6 @@ public class CodeGenerator extends FieldGramBaseListener {
         setResult();
         String csvString = result;
         String tempResultString = "       {";
-
         tempResultString = setContent(csvString, tempResultString);
         tempResultString += "\"";
         return tempResultString;
@@ -61,30 +63,27 @@ public class CodeGenerator extends FieldGramBaseListener {
                 switch (csvString.charAt(i)) {
                     case 'w':
                         tempResultString += "\"w\"";
-                        if (csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r') {
-                            tempResultString += ",";
-                        }
+                        if (isAtTheEOL(csvString, i)) tempResultString += ",";
                         break;
                     case 's':
                         tempResultString += "\"s\"";
-                        if (csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r') {
-                            tempResultString += ",";
-                        }
+                        if (isAtTheEOL(csvString, i)) tempResultString += ",";
                         break;
                     case '\n':
                         tempResultString += "},\n       {";
                         break;
                     default:
-                        //System.err.println(i + "- this character will not be moved = " + csvString.charAt(i));
                 }
-                //System.err.println("actual string : " + tempResultString);
             }
         } catch (Exception e) {
             System.out.println("can not generate tableContent");
             throw new RuntimeException("with error:\n" + e.getMessage());
         }
-
         return tempResultString;
+    }
+
+    private static boolean isAtTheEOL(String csvString, int i) {
+        return csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r';
     }
 
     private static String getPlayerFieldString() throws IOException {
