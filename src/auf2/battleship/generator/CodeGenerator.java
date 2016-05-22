@@ -23,7 +23,7 @@ public class CodeGenerator extends FieldGramBaseListener {
 
     }
 
-    private static String setFooter(String generatedStr) {
+    public static String setFooter(String generatedStr) {
         return generatedStr.substring(0, generatedStr.length() - 2) + "}\n   };\n\n"
                 + "   static String[][] getField(){\n"
                 + "     return field;\n"
@@ -36,7 +36,7 @@ public class CodeGenerator extends FieldGramBaseListener {
                 "   private static String[][] field = new String[][]{\n";
     }
 
-    private static void createAndWriteInFile(String path, String text) throws IOException {
+    public static void createAndWriteInFile(String path, String text) throws IOException {
         File file = new File(path);
         FileWriter writer = new FileWriter(file);
         writer.write(text);
@@ -49,29 +49,41 @@ public class CodeGenerator extends FieldGramBaseListener {
         String csvString = result;
         String tempResultString = "       {";
 
-        for (int i = 0; i < csvString.length(); i++) {
-            switch (csvString.charAt(i)) {
-                case 'w':
-                    tempResultString += "\"0\"";
-                    if (csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r') {
-                        tempResultString += ",";
-                    }
-                    break;
-                case 's':
-                    tempResultString += "\"1\"";
-                    if (csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r') {
-                        tempResultString += ",";
-                    }
-                    break;
-                case '\n':
-                    tempResultString += "},\n       {";
-                    break;
-                default:
-                    System.err.println(i + "- this character will not be moved = " + csvString.charAt(i));
-            }
-            System.err.println("actual string : " + tempResultString);
-        }
+        tempResultString = setContent(csvString, tempResultString);
         tempResultString += "\"";
+        return tempResultString;
+    }
+
+    public static String setContent(String csvString, String tempResultString) {
+
+        try {
+            for (int i = 0; i < csvString.length(); i++) {
+                switch (csvString.charAt(i)) {
+                    case 'w':
+                        tempResultString += "\"w\"";
+                        if (csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r') {
+                            tempResultString += ",";
+                        }
+                        break;
+                    case 's':
+                        tempResultString += "\"s\"";
+                        if (csvString.charAt(i + 1) != '\n' && csvString.charAt(i + 1) != '\r') {
+                            tempResultString += ",";
+                        }
+                        break;
+                    case '\n':
+                        tempResultString += "},\n       {";
+                        break;
+                    default:
+                        //System.err.println(i + "- this character will not be moved = " + csvString.charAt(i));
+                }
+                //System.err.println("actual string : " + tempResultString);
+            }
+        } catch (Exception e) {
+            System.out.println("can not generate tableContent");
+            throw new RuntimeException("with error:\n" + e.getMessage());
+        }
+
         return tempResultString;
     }
 
