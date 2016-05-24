@@ -6,28 +6,3 @@ Teil : (Value Separator);
 Value : 'w' | 's';
 LineBreak : '\r'?'\n' |'\r' ;
 Separator : ';' ;
-
-/*
-file
-    :
-    line+
-    ;
-
-line
-    :
-    key COLON eol
-    ;
-
-key
-    : SHIFF | WASSER
-    ;
-
-eol
-    : NEWLINE | EOF
-    ;
-
-COLON   : ';' ;
-SHIFF   : 's' ;
-WASSER  : 'w' ;
-NEWLINE : '\r'? '\n' | '\r' ;
-*/

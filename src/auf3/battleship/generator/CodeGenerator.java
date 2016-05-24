@@ -1,8 +1,8 @@
 package auf3.battleship.generator;
 
-import auf2.antlergeneration.FieldGramBaseListener;
-import auf2.antlergeneration.FieldGramLexer;
-import auf2.antlergeneration.FieldGramParser;
+import auf3.battleship.antlrgeneration.field.FieldGramBaseListener;
+import auf3.battleship.antlrgeneration.field.FieldGramLexer;
+import auf3.battleship.antlrgeneration.field.FieldGramParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -11,14 +11,22 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class CodeGenerator extends FieldGramBaseListener {
 
     private static String result;
-    private static final String FIELD_PATH = "src/auf2/battleship/game/Field.java";
+    private static final String FIELD_PATH = "src/auf3/battleship/game/Field.java";
 
     public static void main(String[] args) throws IOException {
+        generateFieldClass();
 
+    }
+
+    private static void generateFieldClass() throws IOException {
         //set the head of generated Field class
         String generatedStr = getHeaderStrings();
         //set the Field into String[][] in Field class
@@ -37,9 +45,17 @@ public class CodeGenerator extends FieldGramBaseListener {
     }
 
     private static String getHeaderStrings() {
-        return "package auf2.battleship.game;\n\n" +
+        return "package auf3.battleship.game;\n\n" +
                 "class Field {\n\n" +
-                "   private static String[][] field = new String[][]{\n";
+                "/**\n* created : " + getTime() +
+                "\n*/\n"
+                + "   private static String[][] field = new String[][]{\n";
+    }
+
+    private static String getTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        return dateFormat.format(cal.getTime());
     }
 
     private static void createAndWriteInFile(String path, String text) throws IOException {
