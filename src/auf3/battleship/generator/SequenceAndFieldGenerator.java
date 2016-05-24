@@ -16,14 +16,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class CodeGenerator extends FieldGramBaseListener {
+public class SequenceAndFieldGenerator extends FieldGramBaseListener {
 
-    private static String result;
+    private static String field;
     private static final String FIELD_PATH = "src/auf3/battleship/game/Field.java";
 
     public static void main(String[] args) throws IOException {
+        SeqCodeGen sequence = new SeqCodeGen();
+        sequence.generateSequenceClass();
         generateFieldClass();
-
     }
 
     private static void generateFieldClass() throws IOException {
@@ -52,13 +53,7 @@ public class CodeGenerator extends FieldGramBaseListener {
                 + "   private static String[][] field = new String[][]{\n";
     }
 
-    private static String getTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        return dateFormat.format(cal.getTime());
-    }
-
-    private static void createAndWriteInFile(String path, String text) throws IOException {
+    static void createAndWriteInFile(String path, String text) throws IOException {
         File file = new File(path);
         FileWriter writer = new FileWriter(file);
         writer.write(text);
@@ -68,7 +63,7 @@ public class CodeGenerator extends FieldGramBaseListener {
 
     private static String getTableValues() throws IOException {
         setResult();
-        String csvString = result;
+        String csvString = field;
         String tempResultString = "       {";
         tempResultString = setContent(csvString, tempResultString);
         tempResultString += "\"";
@@ -119,20 +114,25 @@ public class CodeGenerator extends FieldGramBaseListener {
         FieldGramParser.FileContext fileContext = parser.file();
         // Walk it and attach our listener
         ParseTreeWalker walker = new ParseTreeWalker();
-        FieldGramBaseListener listener = new CodeGenerator();
+        FieldGramBaseListener listener = new SequenceAndFieldGenerator();
         walker.walk(listener, fileContext);
 
-        //System.err.print("this is the value of result :\n" + result);
-        return result;
+        //System.err.print("this is the value of field :\n" + field);
+        return field;
     }
 
     public void exitFile(FieldGramParser.FileContext ctx) {
-        result += ctx.getText();
+        field += ctx.getText();
     }
 
     private static void setResult() throws IOException {
         getPlayerFieldString();
     }
 
+    static String getTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        return dateFormat.format(cal.getTime());
+    }
 
 }
