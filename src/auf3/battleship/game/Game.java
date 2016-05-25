@@ -5,9 +5,11 @@ import java.util.Scanner;
 class Game {
 
     private String[][] field;
+    private String[] sequence;
 
-    Game(String[][] field) {
+    Game(String[][] field, String[] sequence) {
         this.field = field;
+        this.sequence = sequence;
     }
 
     void play() {
@@ -22,13 +24,13 @@ class Game {
                 coordination = readInputFromUser();
                 test = testCoordination(coordination);
             }
-            shoot++;
-
             if (checkHits(coordination, field)) {
                 System.err.println("Treffer");
             } else {
                 System.err.println("kein Treffer");
             }
+            System.out.println("Der Computer feuert bei dir auf die Koordinaten "+ sequence[shoot] + " . War das ein Treffer? (j/n)");
+            shoot++;
             if (shoot == 49) {
                 break;
             }

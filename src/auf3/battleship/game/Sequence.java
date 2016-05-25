@@ -2,12 +2,11 @@ package auf3.battleship.game;
 
 class Sequence {
 
-    /**
-     * created : 2016/05/25 00:20:37
-     */
-    private static String[] sequence = new String[49];
-
-    static String[] getSequence() {
+/**
+* created : 2016/05/25 00:27:32
+*/
+   private static String[] sequence = new String[49];
+   static String[] getSequence(){
         sequence[0] = "A1";
         sequence[1] = "A2";
         sequence[2] = "A3";
@@ -58,6 +57,6 @@ class Sequence {
         sequence[47] = "G6";
         sequence[48] = "G7";
 
-        return sequence;
-    }
+     return sequence;
+   }
 }

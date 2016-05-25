@@ -3,7 +3,7 @@ package auf3.battleship.game;
 class Field {
 
 /**
-* created : 2016/05/25 00:20:37
+* created : 2016/05/25 00:27:33
 */
    private static String[][] field = new String[][]{
        {"w","w","w","s","s","s","s"},
