@@ -52,6 +52,7 @@ class SeqCodeGen extends SequenceGramBaseListener {
 
     private static String getValueWithIndex(int i, String input) {
         String[] parts = input.split("\\.");
+
         return parts[i];
     }
 
