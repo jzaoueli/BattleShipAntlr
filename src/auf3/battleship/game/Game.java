@@ -29,7 +29,7 @@ class Game {
             } else {
                 System.err.println("kein Treffer");
             }
-            System.out.println("Der Computer feuert bei dir auf die Koordinaten "+ sequence[shoot] + " . War das ein Treffer? (j/n)");
+            System.out.println("Der Computer feuert bei dir auf die Koordinaten "+ sequence[shoot] + " .\nWar das ein Treffer? (j/n)");
             shoot++;
             if (shoot == 49) {
                 break;
